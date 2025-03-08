@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Inter } from "next/font/google";
 
-export const inter = Inter({ subsets: ["latin"] });
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "NITC Case Study | Nepal E-Governance Analysis",
   description:
     "Technical analysis of National Information Technology Centre's role in Nepal's digital transformation. Case study by Sachet Subedi, Bishal Gurung & Binit Shrestha under Tribhuvan University.",
-  keywords: [
-    "Nepal e-governance",
-    "NITC case study",
-    "Digital Nepal",
-    "Government IT infrastructure",
-    "ICT development Nepal",
-  ],
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,7 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
